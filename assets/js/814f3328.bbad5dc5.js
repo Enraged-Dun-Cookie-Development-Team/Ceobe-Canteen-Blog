@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"\u4efb\u52a1\u7528\u65f6\u8bb0\u5f55\uff08TimeUsageRecordFuture\uff09","permalink":"/blog/\u4efb\u52a1\u7528\u65f6\u8bb0\u5f55\uff08TimeUsageRecordFuture\uff09"}]}')}}]);
