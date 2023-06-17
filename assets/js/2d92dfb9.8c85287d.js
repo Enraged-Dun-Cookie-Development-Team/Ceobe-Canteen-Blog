@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[690],{9010:e=>{e.exports=JSON.parse('{"label":"Rust","permalink":"/blog/tags/rust","allTagsPath":"/blog/tags","count":1}')}}]);
