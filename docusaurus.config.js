@@ -31,6 +31,7 @@ const config = {
     defaultLocale: "zh-Hans",
     locales: ["zh-Hans"],
   },
+  staticDirectories: ['static'],
 
   presets: [
     [
@@ -42,14 +43,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/Enraged-Dun-Cookie-Development-Team/Ceobe-Canteen-Blog/",
+            "https://github.com/Enraged-Dun-Cookie-Development-Team/Ceobe-Canteen-Blog/blob/main/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/Enraged-Dun-Cookie-Development-Team/Ceobe-Canteen-Blog/",
+            "https://github.com/Enraged-Dun-Cookie-Development-Team/Ceobe-Canteen-Blog/blob/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
