@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[121],{8070:e=>{e.exports=JSON.parse('[{"label":"k8s","permalink":"/Ceobe-Canteen-Blog/docs/tags/k-8-s","count":1},{"label":"deploy","permalink":"/Ceobe-Canteen-Blog/docs/tags/deploy","count":1}]')}}]);
