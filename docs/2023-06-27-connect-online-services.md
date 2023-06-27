@@ -6,7 +6,7 @@ sidebar_position: 2
 ---
 安装kubectl(k8s客户端)
 :::tip
-如果已经安装，直接跳转到<a href="#connect">连接线上k8s</a>
+如果已经安装，直接跳转到[连接线上k8s](#连接线上k8s)
 :::
 ### Windows安装与配置
 - 下载kubectl
@@ -26,7 +26,7 @@ sidebar_position: 2
     - 打开`Terminal\Powershell\CMD`, 输入`kubectl version`检查是否配置成功
     ![检查kubectl-version配置](/img/docs/kubectl-version.png)
 
-## <span id="connect">连接线上k8s</span>
+## 连接线上k8s
 - 在`C:\Users\<username>`文件夹中，添加`.kube`文件夹
 - 添加线上k8s连接配置的yaml文件到文件夹下，如果有多个k8s服务，可在`.kube`文件夹中分文件夹，再将yaml文件存于其底下
 ![添加k8s连接配置](/img/docs/k8s-config-yaml.png)
