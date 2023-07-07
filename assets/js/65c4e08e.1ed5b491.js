@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[640],{2991:e=>{e.exports=JSON.parse('{"permalink":"/Ceobe-Canteen-Blog/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

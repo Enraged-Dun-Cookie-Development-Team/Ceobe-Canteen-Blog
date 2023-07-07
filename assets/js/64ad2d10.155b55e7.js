@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[664],{9839:e=>{e.exports=JSON.parse('[{"label":"Typescript","permalink":"/Ceobe-Canteen-Blog/blog/tags/typescript","count":1},{"label":"Vue","permalink":"/Ceobe-Canteen-Blog/blog/tags/vue","count":1},{"label":"Rust","permalink":"/Ceobe-Canteen-Blog/blog/tags/rust","count":1}]')}}]);
