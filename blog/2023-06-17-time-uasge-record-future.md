@@ -1,7 +1,7 @@
 ---
 slug: 任务用时记录（TimeUsageRecordFuture）
 title: 任务用时记录（TimeUsageRecordFuture）
-authors: endi
+authors: GoodJooy
 tags: [Rust]
 ---
 

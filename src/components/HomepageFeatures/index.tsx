@@ -1,12 +1,12 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./styles.module.css";
+import React from "react"
+import clsx from "clsx"
+import styles from "./styles.module.css"
 
 type FeatureItem = {
-  title: string;
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
-  description: JSX.Element;
-};
+  title: string
+  Svg: React.ComponentType<React.ComponentProps<"svg">>
+  description: JSX.Element
+}
 
 const FeatureList: FeatureItem[] = [
   {
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: <>博客！</>,
   },
-];
+]
 
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
@@ -37,7 +37,7 @@ function Feature({ title, Svg, description }: FeatureItem) {
         <p>{description}</p>
       </div>
     </div>
-  );
+  )
 }
 
 export default function HomepageFeatures(): JSX.Element {
@@ -51,5 +51,5 @@ export default function HomepageFeatures(): JSX.Element {
         </div>
       </div>
     </section>
-  );
+  )
 }
