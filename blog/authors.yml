@@ -1,5 +1,11 @@
-endi:
-  name: 凊弦凝绝
-  title: 小刻食堂后端
-  url: https://github.com/GoodJooy
-  image_url: https://github.com/Goodjooy.png
+GoodJooy:
+    name: 凊弦凝绝
+    title: 后端
+    url: https://github.com/GoodJooy
+    image_url: https://github.com/Goodjooy.png
+
+phidiaLam:
+    name: 洛梧藤
+    title: 管理/前端/后端
+    url: https://github.com/phidiaLam
+    image_url: https://github.com/phidiaLam.png

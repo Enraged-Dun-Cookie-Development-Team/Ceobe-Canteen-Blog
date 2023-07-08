@@ -1,7 +1,7 @@
 ---
 slug: 前端录音开发
 title: 前端录音开发
-authors: endi
+authors: QingXianJueNing
 tags: [Typescript, Vue]
 ---
 
