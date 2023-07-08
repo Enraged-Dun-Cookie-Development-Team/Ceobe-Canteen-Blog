@@ -31,9 +31,7 @@ tags: [Typescript, Vue]
       <v-btn @click="onQueryPermission">Request Audio Permission</v-btn>
     </v-col>
     <v-col sm="6" md="4" cols="auto">
-      <v-btn v-if="mediaRecorder != null" @click="onRecordSwitch"
-        >{{ inRecording ? "Stop" : "Start" }} Audio Recording</v-btn
-      >
+      <v-btn v-if="mediaRecorder != null" @click="onRecordSwitch">{{ inRecording ? "Stop" : "Start" }} Audio Recording</v-btn>
     </v-col>
     <audio v-if="audioURL != null" controls :src="audioURL"></audio>
   </v-container>
@@ -49,16 +47,16 @@ tags: [Typescript, Vue]
 对于以上的 template 需要部分状态保持，如以下
 
 ```typescript
-import { ref } from "vue";
+import { ref } from "vue"
 
 // 在未取得用户授权，没有相应的录音器实例存在
-const mediaRecorder = ref<null | MediaRecorder>(null);
+const mediaRecorder = ref<null | MediaRecorder>(null)
 // 当前是否正在进行录音
-const inRecording = ref(false);
+const inRecording = ref(false)
 // 录音结果的URL
-const audioURL = ref<null | string>(null);
+const audioURL = ref<null | string>(null)
 // 录音结果的原始Blob
-const audioBlob = ref<null | Blob>(null);
+const audioBlob = ref<null | Blob>(null)
 ```
 
 最后就是各个按键的回调函数部分
@@ -68,19 +66,19 @@ const audioBlob = ref<null | Blob>(null);
 ```typescript
 const onQueryPermission = () => {
   navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-    let recorder = new MediaRecorder(stream);
+    let recorder = new MediaRecorder(stream)
     recorder.ondataavailable = (ev) => {
-      const blob = new Blob([ev.data], { type: "audio/ogg; codecs=opus" });
-      var object_url = window.URL.createObjectURL(blob);
-      audioURL.value = object_url;
-      audioBlob.value = blob;
+      const blob = new Blob([ev.data], { type: "audio/ogg; codecs=opus" })
+      var object_url = window.URL.createObjectURL(blob)
+      audioURL.value = object_url
+      audioBlob.value = blob
 
-      console.log(`audio record done URL ${audioURL.value}`);
-    };
-    mediaRecorder.value = recorder;
-  });
-  console.log("media recorder create done");
-};
+      console.log(`audio record done URL ${audioURL.value}`)
+    }
+    mediaRecorder.value = recorder
+  })
+  console.log("media recorder create done")
+}
 ```
 
 - `onRecordSwitch` 用户点击用于开始/停止录音。当没有在录音时，点击该按键会开始录音，并重置部分状态。当正在录音时，点击该按键会停止录音。
@@ -88,16 +86,16 @@ const onQueryPermission = () => {
 ```typescript
 const onRecordSwitch = () => {
   if (inRecording.value) {
-    mediaRecorder.value?.stop();
-    inRecording.value = false;
+    mediaRecorder.value?.stop()
+    inRecording.value = false
   } else {
-    audioBlob.value = null;
-    audioURL.value = null;
-    mediaRecorder.value?.start();
-    inRecording.value = true;
+    audioBlob.value = null
+    audioURL.value = null
+    mediaRecorder.value?.start()
+    inRecording.value = true
   }
-  console.log(`now record state is ${mediaRecorder.value?.state}`);
-};
+  console.log(`now record state is ${mediaRecorder.value?.state}`)
+}
 ```
 
 自此，基本版本的录音功能就已经完成了，但是还有些问题
@@ -191,9 +189,7 @@ Uncaught TypeError: Cannot read properties of undefined (reading 'getUserMedia')
         <v-btn @click="onQueryPermission">Request Audio Permission</v-btn>
       </v-col>
       <v-col sm="6" md="4" cols="auto">
-        <v-btn :disabled="mediaRecorder == null" @click="onRecordSwitch"
-          >{{ inRecording ? "Stop" : "Start" }} Audio Recording</v-btn
-        >
+        <v-btn :disabled="mediaRecorder == null" @click="onRecordSwitch">{{ inRecording ? "Stop" : "Start" }} Audio Recording</v-btn>
       </v-col>
       <v-col sm="6" md="4" cols="auto">
         <v-btn :disabled="audioURL == null">Upload</v-btn>
@@ -204,58 +200,58 @@ Uncaught TypeError: Cannot read properties of undefined (reading 'getUserMedia')
 </template>
 
 <script setup lang="ts">
-import fixWebmDuration from "fix-webm-duration";
-import { ref } from "vue";
+  import fixWebmDuration from "fix-webm-duration"
+  import { ref } from "vue"
 
-// 在未取得用户授权，没有相应的录音器实例存在
-const mediaRecorder = ref<null | MediaRecorder>(null);
-// 当前是否正在进行录音
-const inRecording = ref(false);
-// 录音结果的URL
-const audioURL = ref<null | string>(null);
-// 录音结果的原始Blob
-const audioBlob = ref<null | Blob>(null);
-// 录音开始时间
-const startAt = ref(Date.now());
+  // 在未取得用户授权，没有相应的录音器实例存在
+  const mediaRecorder = ref<null | MediaRecorder>(null)
+  // 当前是否正在进行录音
+  const inRecording = ref(false)
+  // 录音结果的URL
+  const audioURL = ref<null | string>(null)
+  // 录音结果的原始Blob
+  const audioBlob = ref<null | Blob>(null)
+  // 录音开始时间
+  const startAt = ref(Date.now())
 
-const onQueryPermission = () => {
-  navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-    let recorder = new MediaRecorder(stream);
+  const onQueryPermission = () => {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      let recorder = new MediaRecorder(stream)
 
-    recorder.onstart = () => {
-      startAt.value = Date.now();
-    };
-    recorder.onstop = async () => {
-      if (audioBlob.value != null) {
-        const now = Date.now();
-        const duration = now - startAt.value;
-        const blob = await fixWebmDuration(audioBlob.value, duration);
-        const blobOgg = new Blob([blob], { type: "audio/ogg; codecs=opus" });
-        audioURL.value = window.URL.createObjectURL(blob);
-        audioBlob.value = blobOgg;
-        console.log(`audio record done URL ${audioURL.value}`);
+      recorder.onstart = () => {
+        startAt.value = Date.now()
       }
-    };
+      recorder.onstop = async () => {
+        if (audioBlob.value != null) {
+          const now = Date.now()
+          const duration = now - startAt.value
+          const blob = await fixWebmDuration(audioBlob.value, duration)
+          const blobOgg = new Blob([blob], { type: "audio/ogg; codecs=opus" })
+          audioURL.value = window.URL.createObjectURL(blob)
+          audioBlob.value = blobOgg
+          console.log(`audio record done URL ${audioURL.value}`)
+        }
+      }
 
-    recorder.ondataavailable = (ev) => {
-      audioBlob.value = ev.data;
-    };
-    mediaRecorder.value = recorder;
-  });
-  console.log("media recorder create done");
-};
-
-const onRecordSwitch = () => {
-  if (inRecording.value) {
-    mediaRecorder.value?.stop();
-    inRecording.value = false;
-  } else {
-    audioBlob.value = null;
-    audioURL.value = null;
-    mediaRecorder.value?.start();
-    inRecording.value = true;
+      recorder.ondataavailable = (ev) => {
+        audioBlob.value = ev.data
+      }
+      mediaRecorder.value = recorder
+    })
+    console.log("media recorder create done")
   }
-  console.log(`now record state is ${mediaRecorder.value?.state}`);
-};
+
+  const onRecordSwitch = () => {
+    if (inRecording.value) {
+      mediaRecorder.value?.stop()
+      inRecording.value = false
+    } else {
+      audioBlob.value = null
+      audioURL.value = null
+      mediaRecorder.value?.start()
+      inRecording.value = true
+    }
+    console.log(`now record state is ${mediaRecorder.value?.state}`)
+  }
 </script>
 ```
