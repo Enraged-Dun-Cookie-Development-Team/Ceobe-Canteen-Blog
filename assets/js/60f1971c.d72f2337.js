@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[727],{3584:e=>{e.exports=JSON.parse('{"label":"Rust","permalink":"/Ceobe-Canteen-Blog/blog/tags/rust","allTagsPath":"/Ceobe-Canteen-Blog/blog/tags","count":1}')}}]);

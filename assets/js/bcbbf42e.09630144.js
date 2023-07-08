@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkceobe_canteen_blog=self.webpackChunkceobe_canteen_blog||[]).push([[606],{6090:e=>{e.exports=JSON.parse('{"label":"Typescript","permalink":"/blog/tags/typescript","allTagsPath":"/blog/tags","count":1}')}}]);
