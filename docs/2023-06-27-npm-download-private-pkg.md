@@ -7,7 +7,7 @@ sidebar_position: 3
 
 ## github生成token
 
-- 点击 https://github.com/settings/tokens 进入token界面
+- 点击 [github token](https://github.com/settings/tokens) 进入token界面
 - 点击 `Generate new token -> Generate new token(classic)` 创建新的token
   ![生成新token](/img/docs/generate-token.png)
 - 根据图片配置生成token
@@ -21,10 +21,12 @@ sidebar_position: 3
 - 获取npm配置文件位置
   ![npm配置路径](/img/docs/npm-config-path.jpg)
 - 添加token到npm配置
-  ```
+
+  ```bash
   //npm.pkg.github.com/:_authToken=<TOKEN>
   <组织名称，如@enraged-dun-cookie-development-team>:registry=https://npm.pkg.github.com
   ```
+
   ![添加token到npm配置](/img/docs/token-to-npm-config.png)
 
 ## 引入npm包

@@ -15,11 +15,10 @@ sidebar_position: 2
 - 下载kubectl
 
   - `curl.exe -LO "https://dl.k8s.io/release/v1.27.3/bin/windows/amd64/kubectl.exe"`
-  - 或者点击 https://dl.k8s.io/release/v1.27.3/bin/windows/amd64/kubectl.exe 下载
-
-  :::tip
-  可通过链接 https://dl.k8s.io/release/stable.txt 查看最新版本kubectl下载
-  :::
+  - 或者点击 [kubectl v1.27.3](https://dl.k8s.io/release/v1.27.3/bin/windows/amd64/kubectl.exe)下载
+    :::tip
+    可通过链接 [版本列表](https://dl.k8s.io/release/stable.txt) 查看最新版本kubectl下载
+    :::
 
 - 配置kubectl
   - 通过`打开文件资源管理器 -> 右键此电脑 -> 属性 -> 高级系统设置 -> 环境变量`打开环境变量
@@ -49,9 +48,12 @@ sidebar_position: 2
 - 利用前一个步骤获取的namespace， 输入`kubectl get svc -n <namespace>`，获取指定namespace下的服务的名字与端口
   ![获取k8s服务中namespace中名字与端口](/img/docs/kubectl-name-port.png)
 - 输入`kubectl port-forward -n <namespace> svc/<service-name> <loacl-port>:<online-port>`将其转发到本地端口上
+
   - 如成功，将看到类似效果
+
     ```Powershell
     Forwarding from 127.0.0.1:7000 -> 6379
     Forwarding from [::1]:7000 -> 6379
     ```
+
 - 这时候你就可以通过`127.0.0.1:<local-port>`来访问服务了
