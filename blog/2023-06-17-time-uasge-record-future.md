@@ -5,8 +5,6 @@ authors: endi
 tags: [Rust]
 ---
 
-
-
 在实践中，由于某些异常（比如死锁）会使得异步任务长时间处于挂起状态。因此，让异步任务能够在每隔固定时间报告一次当前任务累计运行时间，以迅速找到可能的出现异常的异步任务位置的功能支持就变得似乎很有必要。
 
 因此，本次的目标就是希望制作一个 `Future` 类型，能够支持在指定时间之后定时报告任务用时或者其他信息。即 `TimeUsageRecordFuture`
@@ -23,7 +21,7 @@ tags: [Rust]
 3. 需要知道从任务开始后过了多长时间
    - 需要一个 **时间** 记录启动时间，并且是启动时才写入的
 
-同样的，根据需求，也可以推导 `Future` 的实现。 可以很明显知道，`Future` 中有3种状态
+同样的，根据需求，也可以推导 `Future` 的实现。 可以很明显知道，`Future` 中有 3 种状态
 
 1. 被包裹的 `Future` 完成：此时，不需要理会定时器状态，直接响应 `Ready`(完成)
 2. 被包裹的 `Future` 正在进行，定时器到达定时点：此时，需要重置定时器状态，并执行指定任务，然后响应 `Pending`(正忙)
@@ -41,7 +39,7 @@ tags: [Rust]
 
 - [`pin_project`](https://docs.rs/pin-project/latest/pin_project/)
 
-   >这个crate 提供一个过程宏，以将较大粒度的 `Pin` (Pin住整个结构体)，转化为较小粒度的 `Pin` (只Pin某几个特定field)
+  > 这个 crate 提供一个过程宏，以将较大粒度的 `Pin` (Pin 住整个结构体)，转化为较小粒度的 `Pin` (只 Pin 某几个特定 field)
 
 以下是依赖在 `Cargo.toml` 里面的样子
 
@@ -72,15 +70,15 @@ pub struct TimeUsageRecordFuture<Fut, Recorder> {
 - fut: `Fut` 是被包裹的`Future`， 被标注为 pin, 也就是降低粒度后依然是被`Pin` 包裹的
 - timer: `Interval` 是 定时器
 - recorder: `Recorder` 是每次时间到后需要执行的任务
-- start_at: `Option<Instant>` 任务开始时间，当None 时，任务未开始， `Some` 时任务已经开始
+- start_at: `Option<Instant>` 任务开始时间，当 None 时，任务未开始， `Some` 时任务已经开始
 
 > 为什么没有在结构体声明中进行泛型约束？
 >
->在很多Rust最佳实践中，都是推荐在 `impl` 代码块中在需要的时候再添加泛型约束。这样可以一定程度添加灵活性。但社区同样也有人认为将约束添加在类型声明中，可以避免某些约束缺失带来的奇怪的编译器报错。
+> 在很多 Rust 最佳实践中，都是推荐在 `impl` 代码块中在需要的时候再添加泛型约束。这样可以一定程度添加灵活性。但社区同样也有人认为将约束添加在类型声明中，可以避免某些约束缺失带来的奇怪的编译器报错。
 
-接下来，就是 `Future` 的实现了。基于前面的分析，我们的`Future`状态机需要维护3种状态的响应
+接下来，就是 `Future` 的实现了。基于前面的分析，我们的`Future`状态机需要维护 3 种状态的响应
 
-> `Future::poll(Pin<&mut Self>, &mut Context<'_>) -> Poll<Future::Output>`  是 `Future` 的核心函数，在该异步任务开始后，异步运行时会执行该函数，如果该函数返回 `Poll::Ready` 那这个异步任务就完成了。否则，异步运行时会将该任务放入等待队列中。当这个异步任务准备好进入下一个状态时，会调用从 `Context<'_>` 中获得的 `wake` 函数，以告知异步运行时。此时异步运行时将会把对应的异步任务加入就绪队列，等待执行（调用`poll`）
+> `Future::poll(Pin<&mut Self>, &mut Context<'_>) -> Poll<Future::Output>` 是 `Future` 的核心函数，在该异步任务开始后，异步运行时会执行该函数，如果该函数返回 `Poll::Ready` 那这个异步任务就完成了。否则，异步运行时会将该任务放入等待队列中。当这个异步任务准备好进入下一个状态时，会调用从 `Context<'_>` 中获得的 `wake` 函数，以告知异步运行时。此时异步运行时将会把对应的异步任务加入就绪队列，等待执行（调用`poll`）
 
 以下为具体代码
 
@@ -118,7 +116,7 @@ where
 
 > 在计时器完成后，有一部分特殊的代码，这是为了用来处理第一次进入时，Interval 会立即返回（`Ready`）这样在任务开始时可以记录下开始的时间点（`None` -> `Some(Instant)`）
 
-当然别忘记，在实现Future 时，我们需要要求 `Fut` 泛型参数实现 `Future` 和 `Recorder` 泛型参数实现 `FnMut(Duration)`
+当然别忘记，在实现 Future 时，我们需要要求 `Fut` 泛型参数实现 `Future` 和 `Recorder` 泛型参数实现 `FnMut(Duration)`
 
 ## 周边辅助
 
@@ -201,7 +199,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 虽然有一定误差，但是可以看到我们的代码正如我们预期运行！
 
 > 单元测试需要启用 `tokio` 的 `test-util` 和 `macros` features
->
+
 ## 完整代码
 
 以下为完整的代码
