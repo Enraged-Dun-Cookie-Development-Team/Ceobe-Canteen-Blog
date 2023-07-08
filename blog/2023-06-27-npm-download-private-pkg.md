@@ -1,8 +1,8 @@
 ---
 slug: 将github私有npm包添加到项目
 title: 将github私有npm包添加到项目
+authors: phidiaLam
 tags: [npm, js, ts]
-sidebar_position: 3
 ---
 
 ## github生成token

@@ -1,8 +1,8 @@
 ---
-slug: 利用kubectl连接线上服务
-title: 利用kubectl连接线上服务
-tags: [k8s, deploy]
-sidebar_position: 2
+slug: 连接在线K8s服务
+title: 连接在线Kubernetes服务
+authors: phidiaLam
+tags: [K8s, deploy]
 ---
 
 安装kubectl(k8s客户端)
