@@ -14,7 +14,7 @@ const config = {
   url: "https://enraged-dun-cookie-development-team.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/Ceobe-Canteen-Blog/",
+  baseUrl: "/",
   trailingSlash: false,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -31,7 +31,7 @@ const config = {
     defaultLocale: "zh-Hans",
     locales: ["zh-Hans"],
   },
-  staticDirectories: ['static'],
+  staticDirectories: ["static"],
 
   presets: [
     [
