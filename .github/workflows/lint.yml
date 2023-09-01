@@ -23,7 +23,7 @@ jobs:
       - name: Run markdownlint
         uses: articulate/actions-markdownlint@v1
         with:
-          config: markdownlint-config.json
+          config: .markdownlint.yaml
           # 匹配任意md, mdx文件
           files: '**/*.md?(x)'
           ignore: node_modules
