@@ -4,18 +4,16 @@ on:
   pull_request_target:
     branches: [main]
 
-permissions:
-  contents: read
-  pull-requests: write
+permissions: write-all
 
 jobs:
   markdownlint:
-    name: runner / eslint
+    name: markdown-lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node Environment
         uses: ./.github/actions/setup-node
@@ -27,3 +25,4 @@ jobs:
           # 匹配任意md, mdx文件
           files: '**/*.md?(x)'
           ignore: node_modules
+          fix: true
