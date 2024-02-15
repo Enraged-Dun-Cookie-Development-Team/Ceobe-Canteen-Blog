@@ -1,29 +1,32 @@
 name: Lint
 
 on:
-  pull_request_target:
-    branches: [main]
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'src/**/*.md?(x)'
+      - 'docs/**/*.md?(x)'
+      - 'blog/**/*.md?(x)'
 
-permissions:
-  contents: read
-  pull-requests: write
+permissions: write-all
 
 jobs:
   markdownlint:
-    name: runner / eslint
+    name: markdown-lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node Environment
-        uses: ./.github/actions/setup-node
+        uses: actions/checkout@v4
 
       - name: Run markdownlint
         uses: articulate/actions-markdownlint@v1
         with:
           config: .markdownlint.yaml
           # 匹配任意md, mdx文件
-          files: '**/*.md?(x)'
+          files: 'src/**/*.md?(x) docs/**/*.md?(x) blog/**/*.md?(x) README.md'
           ignore: node_modules
+          fix: true
