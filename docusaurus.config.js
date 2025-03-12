@@ -38,7 +38,7 @@ const config = {
     mermaid: true,
   },
   themes: ["@docusaurus/theme-mermaid"],
-
+  plugins: ["./src/plugins/webpack"],
   presets: [
     [
       "classic",
