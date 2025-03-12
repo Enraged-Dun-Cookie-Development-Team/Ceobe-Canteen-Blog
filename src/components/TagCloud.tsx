@@ -18,7 +18,10 @@ const TagCloud = () => {
   }
 
   useEffect(() => {
-    fetch("/api/v1/canteen/config/datasource/list", requestOptions)
+    fetch(
+      "https://server.ceobecanteen.top/api/v1/canteen/config/datasource/list",
+      requestOptions,
+    )
       .then((response) => response.json())
       .then((result: CeobeResponseType<DataSourceType[]>) => {
         console.log(result.data)
