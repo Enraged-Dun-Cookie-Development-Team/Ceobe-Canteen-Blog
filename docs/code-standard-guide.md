@@ -10,13 +10,13 @@ sidebar_position: 3
 
 | 分支类型   | 命名格式          | 使用场景说明                         |
 | ---------- | ----------------- | ------------------------------------ |
-| `feat/`    | feat/<功能简述>   | 新功能开发（例：`feat/user-login`）  |
-| `hotfix/`  | hotfix/<修复简述> | 紧急线上问题修复                     |
-| `release/` | release/<版本号>  | 预发布环境验证（例：`release/v1.2`） |
-| `test/`    | test/<测试内容>   | 专项测试（如性能/压力测试）          |
-| `docs/`    | docs/<文档内容>   | 文档更新（例：`docs/api-update`）    |
-| `chore/`   | chore/<维护内容>  | 日常维护（依赖更新/代码优化）        |
-| `config/`  | config/<变更类型> | 配置文件调整（需配套环境变量更新）   |
+| `feat/`    | `feat/<功能简述>`   | 新功能开发（例：`feat/user-login`）  |
+| `hotfix/`  | `hotfix/<修复简述>` | 紧急线上问题修复                     |
+| `release/` | `release/<版本号>`  | 预发布环境验证（例：`release/v1.2`） |
+| `test/`    | `test/<测试内容>`   | 专项测试（如性能/压力测试）          |
+| `docs/`    | `docs/<文档内容>`   | 文档更新（例：`docs/api-update`）    |
+| `chore/`   | `chore/<维护内容>`  | 日常维护（依赖更新/代码优化）        |
+| `config/`  | `config/<变更类型>` | 配置文件调整（需配套环境变量更新）   |
 
 ### 2. 分支策略
 
